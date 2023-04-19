@@ -71,12 +71,40 @@ namespace HelloWorld
 
         public static bool ContainsSubString(string part , string text) { 
         
-            int lengthOfPart =0;
+            
             //bool doesContain = false;
+            int counter = 0;
             for(int i = 0; i < text.Length; i++) {
-                if (text[i] == part[0]) { 
-                   
-                    lengthOfPart++;
+                if (text[i] == part[counter])
+                {
+                    
+                    counter++;
+
+                }
+                else {
+                    counter = 0;
+
+                
+                }
+
+                if (counter == part.Length)
+                {
+                    return true;
+                }
+
+            }
+            
+            return false;
+
+        
+        }
+
+
+    }
+
+
+}
+  /*lengthOfPart++;
                     int nextSymbolForText = i + 1;
                     int nextSymbolForPart = 1;
 
@@ -93,23 +121,4 @@ namespace HelloWorld
 
                         nextSymbolForText++;
                         nextSymbolForPart++;
-                    }
-
-
-
-                }
-            
-            }
-            if(lengthOfPart == part.Length) {
-                return true;
-            }
-            return false;
-
-        
-        }
-
-
-    }
-
-
-}
+                    }*/
