@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bobik\\source\\repos\\interpretationOfLogicalExpressions\\interpretationOfLogicalExpressions\\interpretationOfLogicalExpressions.csproj",
+      "projectUniqueName": "C:\\Users\\bobik\\Desktop\\Uni\\gitRepo\\University-project-\\interpretationOfLogicalExpressions\\interpretationOfLogicalExpressions\\interpretationOfLogicalExpressions.csproj",
       "projectName": "interpretationOfLogicalExpressions",
-      "projectPath": "C:\\Users\\bobik\\source\\repos\\interpretationOfLogicalExpressions\\interpretationOfLogicalExpressions\\interpretationOfLogicalExpressions.csproj",
+      "projectPath": "C:\\Users\\bobik\\Desktop\\Uni\\gitRepo\\University-project-\\interpretationOfLogicalExpressions\\interpretationOfLogicalExpressions\\interpretationOfLogicalExpressions.csproj",
       "packagesPath": "C:\\Users\\bobik\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bobik\\source\\repos\\interpretationOfLogicalExpressions\\interpretationOfLogicalExpressions\\obj\\",
+      "outputPath": "C:\\Users\\bobik\\Desktop\\Uni\\gitRepo\\University-project-\\interpretationOfLogicalExpressions\\interpretationOfLogicalExpressions\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
