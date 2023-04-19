@@ -11,67 +11,34 @@ namespace HelloWorld
         {
             
 
-            String input = Console.ReadLine();
-            checkCommand(input);
-            String[] afterSplit = SplitMethod(' ',input);
-            foreach (String a in afterSplit) {
-                Console.WriteLine(a);
-            }
+            string input = Console.ReadLine();
+            Console.WriteLine(ContainsSubString("she",input));
+            
+            string[] afterSplit = SplitMethod(' ',input);
+           
             
         }
-        public static void checkCommand(String input) {
-            String command = "";
-            foreach (char symbol in input) {
-                if (symbol == ' ') {
-                    break; 
-                }
-                command += symbol;
-            }
+        public static void checkCommand(string command,string input) {
+            
 
             switch (command) {
                 case "DEFINE":
-                    defineFunc(input);
+                    //defineFunc(input);
                     break;
                 case "SOLVE":
+                    //solveMethod
                     break;
                 case "ALL":
+                    //allMethod
                     break;
                 case "FIND":
+                    //findMethod
                     break;
             }
 
         }
 
-        public static void defineFunc(String input)
-        {
-
-            //DEFINE func1(a, b): "a & b"
-            //DEFINE func4(a, b, c): "a & b | c | !d" -> give bug, d is not defined
-
-            string[] functionZandCondition = new string[2];
-            string currentExpresstion = "";
-
-            for (int startingSymbol = "DEFINE".Length +1; startingSymbol < input.Length; startingSymbol++)
-
-            {
-                // If the currentSymbol == : -> I add the string to the array and after that refresh the string and continue to the next command
-                if (input[startingSymbol] == ':') {
-                    functionZandCondition[0] = currentExpresstion;
-                    currentExpresstion = "";
-                    continue;
-                }
-                //here i check if the current symbol is  diffrent from a quotation mark or space and if it is then i add it to the string ( that's how i build the string)
-                if (input[startingSymbol] != ' '  && input[startingSymbol] != '"') {
-                    currentExpresstion += input[startingSymbol];  
-                }
-                // here i add the last string _> the expression so after that i know the expression is the second string in the array, so i can access it easier to the tree
-                if (startingSymbol == input.Length - 1) {
-                    functionZandCondition[1] = currentExpresstion;
-                    break;
-                }
-            }
-
-        }
+        
 
 
         public static string[] SplitMethod(char separator,string text ) {
@@ -81,14 +48,14 @@ namespace HelloWorld
                     count++;
                 }
             }
-            string[] symbols = new string[count];
-            String currentValue = "";
+            string[] words = new string[count];
+            string currentValue = "";
             foreach (char symbol in text)
             {
       
                 if (symbol == separator)
                 {
-                    symbols[symbols.Length - count] = currentValue;
+                    words[words.Length - count] = currentValue;
                     count--;
                     currentValue = "";
                 }
@@ -97,7 +64,46 @@ namespace HelloWorld
 
                 }
             }
-            return symbols;
+            return words;
+
+        
+        }
+
+        public static bool ContainsSubString(string part , string text) { 
+        
+            int lengthOfPart =0;
+            //bool doesContain = false;
+            for(int i = 0; i < text.Length; i++) {
+                if (text[i] == part[0]) { 
+                   
+                    lengthOfPart++;
+                    int nextSymbolForText = i + 1;
+                    int nextSymbolForPart = 1;
+
+                    while (nextSymbolForPart < part.Length)
+                    {
+                        if (text[nextSymbolForText] != part[nextSymbolForPart])
+                        {
+                            lengthOfPart = 0;
+
+                            break;
+                        }
+
+                        lengthOfPart++;
+
+                        nextSymbolForText++;
+                        nextSymbolForPart++;
+                    }
+
+
+
+                }
+            
+            }
+            if(lengthOfPart == part.Length) {
+                return true;
+            }
+            return false;
 
         
         }
