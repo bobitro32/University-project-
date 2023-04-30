@@ -6,24 +6,29 @@ namespace HelloWorld
     class Program
     {
 
-       
+
         static void Main(string[] args)
         {
-            
+
 
             string input = Console.ReadLine();
-            Console.WriteLine(ContainsSubString("she",input));
-            
-            string[] afterSplit = SplitMethod(' ',input);
-           
-            
-        }
-        public static void checkCommand(string command,string input) {
-            
+            //DEFINE func3(a, b, c, d): "a & (b | c) & !d"
+            string res = SubstringMethod(input, 24);
+            Console.WriteLine(res);
 
-            switch (command) {
+
+            //string[] afterSplit = SplitMethod(' ', input);
+
+
+        }
+        public static void checkFuntion(string command, string input)
+        {
+
+
+            switch (command)
+            {
                 case "DEFINE":
-                    //defineFunc(input);
+                    defineFunc(input);
                     break;
                 case "SOLVE":
                     //solveMethod
@@ -38,73 +43,51 @@ namespace HelloWorld
 
         }
 
-        
 
 
-        public static string[] SplitMethod(char separator,string text ) {
+
+        public static string[] SplitMethod(char separator, string text)
+        {
             int count = 1;
-            foreach (char symbol in text) {
-                if (symbol == separator) { 
+            foreach (char symbol in text)
+            {
+                if (symbol == separator)
+                {
                     count++;
                 }
             }
-            string[] words = new string[count];
+            string[] symbols = new string[count];
             string currentValue = "";
             foreach (char symbol in text)
             {
-      
+
                 if (symbol == separator)
                 {
-                    words[words.Length - count] = currentValue;
+                    symbols[symbols.Length - count] = currentValue;
                     count--;
                     currentValue = "";
                 }
-                else {
-                    currentValue += symbol;        
+                else
+                {
+                    currentValue += symbol;
 
                 }
             }
-            return words;
+            return symbols;
 
-        
+
         }
 
-        public static bool ContainsSubString(string part , string text) { 
-        
-            
+        public static bool ContainsSubString(string part, string text)
+        {
+
+            int lengthOfPart = 0;
             //bool doesContain = false;
-            int counter = 0;
-            for(int i = 0; i < text.Length; i++) {
-                if (text[i] == part[counter])
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (text[i] == part[0])
                 {
-                    
-                    counter++;
-
-                }
-                else {
-                    counter = 0;
-
-                
-                }
-
-                if (counter == part.Length)
-                {
-                    return true;
-                }
-
-            }
-            
-            return false;
-
-        
-        }
-
-
-    }
-
-
-}
-  /*lengthOfPart++;
+                    lengthOfPart++;
                     int nextSymbolForText = i + 1;
                     int nextSymbolForPart = 1;
 
@@ -121,4 +104,68 @@ namespace HelloWorld
 
                         nextSymbolForText++;
                         nextSymbolForPart++;
-                    }*/
+                    }
+
+
+
+                }
+
+            }
+            if (lengthOfPart == part.Length)
+            {
+                return true;
+            }
+            return false;
+
+
+        }
+
+
+        public static void defineFunc(String input)
+        {
+            //DEFINE func3(a, b, c, d): "a & (b | c) & !d"
+
+
+
+
+
+
+        }
+
+        public static string SubstringMethod(string input, int startIndex)
+        {
+            if (startIndex < 0 || startIndex >= input.Length)
+            {
+                throw new ArgumentOutOfRangeException(nameof(startIndex));
+            }
+
+
+            int len = 0;
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (i >= startIndex)
+                {
+                    len++;
+                }
+            }
+            if (len < 0 || startIndex + len > input.Length)
+            {
+                throw new ArgumentOutOfRangeException(nameof(len));
+            }
+
+            char[] chars = new char[len];
+
+            for (int i = 0; i < len; i++)
+            {
+                chars[i] = input[startIndex + i];
+            }
+
+            return new string(chars);
+        }
+
+
+
+    }
+
+
+}
