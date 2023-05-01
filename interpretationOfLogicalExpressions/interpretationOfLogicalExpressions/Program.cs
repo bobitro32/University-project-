@@ -13,11 +13,14 @@ namespace HelloWorld
 
             string input = Console.ReadLine();
             //DEFINE func3(a, b, c, d): "a & (b | c) & !d"
-            string res = SubstringMethod(input, 24);
-            Console.WriteLine(res);
 
 
-            //string[] afterSplit = SplitMethod(' ', input);
+
+            string[] afterSplit = SplitMethod("\"", input);
+            foreach (string line in afterSplit)
+            {
+                Console.WriteLine(line);
+            }
 
 
         }
@@ -46,33 +49,76 @@ namespace HelloWorld
 
 
 
-        public static string[] SplitMethod(char separator, string text)
+        public static string[] SplitMethod(string separator, string text)
         {
-            int count = 1;
-            foreach (char symbol in text)
+            int count = 0;
+            int index = 0;
+            int len = 0;
+            while (len < text.Length)
             {
-                if (symbol == separator)
+                if (text[len] == separator[index])
                 {
-                    count++;
-                }
-            }
-            string[] symbols = new string[count];
-            string currentValue = "";
-            foreach (char symbol in text)
-            {
+                    index++;
+                    if (index == separator.Length)
+                    {
+                        index = 0;
+                        count++;
 
-                if (symbol == separator)
-                {
-                    symbols[symbols.Length - count] = currentValue;
-                    count--;
-                    currentValue = "";
+                    }
+
+
                 }
                 else
                 {
-                    currentValue += symbol;
+                    index = 0;
 
                 }
+                len++;
+
             }
+            if (count == 0)
+            {
+                throw new ArgumentOutOfRangeException("There was not substring to split by in the input");
+            }
+            string[] symbols = new string[count];
+            len = 0;
+            index = 0;
+            int position = 0;
+            string currentString = "";
+            while (len < text.Length)
+            {
+
+                if (text[len] != separator[index])
+                {
+
+                    currentString += text[len];
+
+                }
+                else
+                {
+
+                    index++;
+                    if (index == separator.Length)
+                    {
+                        index = 0;
+
+                        symbols[position] = currentString;
+                        position++;
+                        currentString = "";
+
+                    }
+                }
+
+                len++;
+            }
+
+            if (currentString != "")
+            {
+
+                symbols[position] = currentString;
+            }
+
+
             return symbols;
 
 
@@ -162,6 +208,39 @@ namespace HelloWorld
 
             return new string(chars);
         }
+
+
+        public static int IndexOfMethod(string str, string searchValue)
+        {
+            if (searchValue.Length > str.Length)
+            {
+                return -1;
+            }
+
+            for (int i = 0; i <= str.Length - searchValue.Length; i++)
+            {
+                bool match = true;
+
+                for (int j = 0; j < searchValue.Length; j++)
+                {
+                    if (str[i + j] != searchValue[j])
+                    {
+                        match = false;
+                        break;
+                    }
+                }
+
+                if (match)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+
+
 
 
 
