@@ -109,20 +109,20 @@ public class Tree
                     continue;
                 }
 
-                var treeNode = new Node(c);
+                Node treeNode = new Node(c);
                 stack.Push(treeNode);
 
             }
             else if (c == '!')
             {
-                var treeNode = new Node(c);
+                Node treeNode = new Node(c);
                 stack.Push(treeNode);
             }
             else
             {
-                var right = stack.Pop();
-                var left = stack.Pop();
-                var node = new Node(c) { Left = left, Right = right };
+                Node right = stack.Pop();
+                Node left = stack.Pop();
+                Node node = new Node(c) { Left = left, Right = right };
                 stack.Push(node);
             }
         }
